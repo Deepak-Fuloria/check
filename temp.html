@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #add{
+               border: 2px solid black;
+               cursor: pointer;
+            }
+            #sub{
+               border: 2px solid black;
+               cursor: pointer;
+            }
+        </style>
+    </head>
+<body>
+    <input type="text" id="cel" onInput="cen()" placeholder="enter temp in celcius">
+    <span id="add" onclick="add()">+</span>  <span  id="sub" onclick="sub()">--</span>
+    <br><br>
+    <input type="text" id="far" onInput="fah()" placeholder="enter temp in farenhite">
+    <span id="add" onclick="addfar()">+</span>  <span  id="sub" onclick="subfar()">--</span>
+</body>
+
+<script>
+ 
+//    let password= document.getElementById("password");
+//    let passrror= document.getElementById("pass_error");
+//    let check= document.getElementById("checkbox");
+//    let button= document.getElementById("button");
+
+
+   function cen()
+   {
+   
+         let cel= document.getElementById("cel").value;
+         let far= document.getElementById("far").value;
+        far=(cel*9/5+32).toFixed(2)
+        document.getElementById("far").value=far
+        if(cel==""){
+            document.getElementById("far").value=""
+        }
+  
+   }
+    function fah()
+    {
+        
+        let cel= document.getElementById("cel").value;
+         let far= document.getElementById("far").value;
+         cel=((far-32)*5/9).toFixed(2)
+        document.getElementById("cel").value=cel
+        if(far==""){
+            document.getElementById("cel").value=""
+        }
+        
+       
+    }
+
+    
+         let far= document.getElementById("far").value;
+
+    function add()
+    {
+        let cel= Number(document.getElementById("cel").value);
+        // document.body.style.backgroundColor="red"
+        cel= cel+1;
+        document.getElementById("cel").value=cel;
+        far=(cel*9/5+32).toFixed(2)
+        document.getElementById("far").value=far
+        if(cel==null){
+            document.getElementById("far").value=""
+        }
+
+    }
+    function sub()
+    {
+        let cel= Number(document.getElementById("cel").value);
+        // document.body.style.backgroundColor="red"
+        cel= cel-1;
+        document.getElementById("cel").value=cel;
+        far=(cel*9/5+32).toFixed(2)
+        document.getElementById("far").value=far
+        if(cel==null){
+            document.getElementById("far").value=""
+        }
+
+    }
+
+       function  addfar(){
+
+        let far= Number(document.getElementById("far").value);
+        far= far +1   
+        document.getElementById("far").value=far;
+         cel=((far-32)*5/9).toFixed(2)
+        document.getElementById("cel").value=cel
+        if(far==null){
+            document.getElementById("cel").value=""
+        }
+    }
+
+         subfar=()=>{
+
+        let far= Number(document.getElementById("far").value);
+        far= far-1   
+        document.getElementById("far").value=far;
+        cel=((far-32)*5/9).toFixed(2)
+        document.getElementById("cel").value=cel
+        if(far==null){
+            document.getElementById("cel").value=""
+}
+}
+
+</script>
+
+</html>
+

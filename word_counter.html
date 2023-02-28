@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <textarea name="" id="text" cols="100" rows="12" ></textarea>
+    <br> <br>
+    <span id="word">0 word</span>
+    <span id="char"> 0 character</span>
+</body>
+<script>
+    let word= document.getElementById("word")
+    let char= document.getElementById("char")
+    let text= document.getElementById("text")
+    let count=0
+    let words=0
+
+    text.addEventListener("keydown",realtext)
+
+    function realtext(e)
+    {
+        countchar(e)
+        countword(e)
+
+    }
+
+    function countchar(e)
+    {
+        
+      if(e.key!=="Backspace" && e.key!=="Shift" &&e.key!=="TAB" &&e.key!=="Control" && e.key!=="AltGraph" && e.key!=="Escape" )
+      {
+        count++ 
+       
+        if(text.value!=null)
+    {
+        char.innerHTML=`${count} charactes` ;
+    }
+      }
+      else if(e.key==="Backspace")
+      {
+        if(count>0)
+        {
+             count--
+       
+            char.innerHTML=`${count} charactes` ;
+        }
+        else{
+            char.innerHTML="0 character";
+        }
+        
+      }
+    }
+
+    function countword(e)
+    {
+     
+        let x=text.value;
+       let  result =x.trim()
+       let array =result.split(" ");
+       console.log(array)
+       for(let element of array)
+       {
+        if(element===" ")
+        {  
+            words++
+           
+       } 
+    }
+
+      let num= array.length-words
+    //   console.log(element)
+    //    console.log(array.length)
+    //    console.log(num)
+       
+     word.innerHTML=`${num} words`
+
+     if(array[0]=="")
+     {
+        word.innerHTML="0 words"
+     }
+   
+
+}
+
+
+</script>
+</html>

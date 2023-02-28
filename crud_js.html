@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crud_js</title>
+
+    <style>
+        #button{
+            color: red;
+            display:block;
+        }
+        #update{
+            color: green;
+          display: none;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div>
+        <input type="hidden" id="sn"  >
+        <br> <br>
+        <input type="text" id="name" placeholder="name" name="name" >
+        <br> <br>
+        <input type="text" id="age" placeholder="age" ><br> <br>
+        <input type="text" id="address" placeholder="address" ><br> <br>
+        <input type="text" id="phone" placeholder="phone" ><br> <br>
+      
+        <button id="button">save</button>
+     
+    
+        <button id="update">save</button>
+      
+       <br><br>
+
+       <div id="message"></div><br><br>
+    </div>
+    <div>
+        <table border=1 id="table">
+       <thead>
+        <tr >
+            <th id="sn">sn</th>
+            <th id="tname">name</th>
+            <th id="tage">age</th>
+            <th id="tadd">address</th>
+            <th id="tphone">phone</th>
+            <th id="tedit">edit  </th>
+            <th id="tdelete">delete</th>
+            </tr>
+       </thead>
+            
+        </table>
+    
+    </div>
+  
+
+</body>
+
+<script>
+  let button= document.getElementById("button")
+
+     button.addEventListener("click",add);
+
+     
+ 
+ let array=[];
+
+let i=0
+
+function add() {
+   
+ let name= document.getElementById("name").value
+ let age= document.getElementById("age").value
+ let address= document.getElementById("address").value
+ let phone= document.getElementById("phone").value
+
+ let obj={
+    name:name,
+    age:age,
+    add:address,
+    phone:phone
+ };
+ array.push(obj)
+ console.log(obj)
+ console.log(array)
+
+let table= document.getElementById("table")
+
+let mydata=   ` 
+        <td id="sn">   ${i+1}  </td>
+         <td id="t1name">   ${array[i].name}  </td>
+        <td id="t1age">   ${array[i].age}   </td>
+         <td id="t1add">  ${array[i].add}    </td>
+        <td id="t1phone"> ${array[i].phone}   </td>
+        <td id="t1edit">   <a  href="#" onClick="edit(this)" id="edit">edit</a>  </td>
+        <td id="t1delete"> <a href="#" onClick="delete(this)" id="delete">delete</a> </td>
+   
+ `
+       let tr=document.createElement("tr")
+       
+       tr.innerHTML=mydata;
+       
+      table.appendChild(tr)
+
+       document.getElementById("name").value=""
+       document.getElementById("age").value=""
+       document.getElementById("address").value=""
+       phone= document.getElementById("phone").value=""
+     
+     i++
+
+}
+ 
+function edit(e)
+{
+   
+ 
+
+
+   let parent=e.parentElement.parentElement
+     
+    let sn= parent.children[0].innerHTML
+     let name= parent.children[1].innerHTML
+     let age= parent.children[2].innerHTML
+     let address= parent.children[3].innerHTML
+     let phone= parent.children[4].innerHTML
+     
+    
+    
+
+     document.getElementById("name").value=name
+       document.getElementById("age").value=age
+       document.getElementById("address").value=address
+       phone= document.getElementById("phone").value=phone
+
+
+    array[sn-1].name=document.getElementById("name").value
+    array[sn-1].age=document.getElementById("age").value
+    array[sn-1].add=document.getElementById("address").value
+    array[sn-1].phone=document.getElementById("name").value 
+
+    parent.remove()
+
+}
+
+
+   
+    
+
+
+
+</script>
+
+</html>

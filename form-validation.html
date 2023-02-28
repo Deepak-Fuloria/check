@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+<body>
+    <input type="text" id="name"><br><br>
+    <div id="name_error"></div>
+    <input type="password" id="password"><br><br>
+    <div id="pass_error"></div>
+    <input type="checkbox" id="check" onClick="checkb()"><br><br>
+    <button id="button" onClick="submit()">sign in</button>
+</body>
+
+<script>
+   let name= document.getElementById("name");
+   let namerror= document.getElementById("name_error");
+   let password= document.getElementById("password");
+   let passrror= document.getElementById("pass_error");
+   let check= document.getElementById("checkbox");
+   let button= document.getElementById("button");
+
+    function submit()
+{
+    if(name.value==""){
+        namerror.innerHTML="name cant be empty"
+    }
+    else if(password.value==""){
+        passrror.innerHTML="password cant be empty"
+    }
+    else{
+        passrror.innerHTML="log in successful"
+    }
+}
+let x=1;
+function checkb()
+{  
+   
+    if(x==1)
+    {
+        password.setAttribute("type","text")
+       
+        x=0
+    }
+    else{
+        password.setAttribute("type","password")
+        x=1
+    }
+    
+    
+
+}
+
+
+</script>
+
+</html>
+
